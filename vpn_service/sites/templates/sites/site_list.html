@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Site list
+{% endblock title %}
+
+{% block content %}
+<style>
+    /* Загальні стилі для контейнера контенту */
+    .content-container { /* Додано контейнер для кращого контролю розміщення */
+        width: 80%;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Стилі для заголовка */
+    h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Стилі для кнопок (Add New Site та Back to Profile) */
+    .button { /* Загальний клас для кнопок */
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    .button:hover {
+        background-color: #0056b3;
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Стилі для списку сайтів */
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* Стилі для елементів списку сайтів */
+    li {
+        margin-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+    }
+
+    /* Стилі для назви сайту */
+    li strong {
+        font-weight: bold;
+    }
+
+    /* Стилі для посилань на сайт та VPN */
+    li a {
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    li a:hover {
+        color: #007bff;
+    }
+</style>
+
+<div class="content-container">
+    <h1>Your Sites</h1>
+
+    <a href="{% url 'site_create' %}" class="button">Add New Site</a>
+    <a href="{% url 'profile' %}" class="button">Back to Profile</a> 
+
+    <ul>
+        {% for site in sites %}
+            <li>
+                <strong>{{ site.name }}</strong> - <a href="{{ site.url }}">{{ site.url }}</a>
+                (<a href="{% url 'proxy_view' site.name '/' %}">Visit via VPN</a>)
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}

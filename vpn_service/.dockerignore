@@ -1,0 +1,8 @@
+*.pyc
+*.pyo
+*.pyd
+pycache/
+*.sqlite3
+/media/
+/staticfiles/
+.venv

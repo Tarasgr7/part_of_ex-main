@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Proxy
+{% endblock title %}
+
+{% block content %}
+<style>
+    /* Стилі для заголовка */
+    h1 {
+        color: #333; /* Темно-сірий колір */
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Стилі для контейнера контенту проксі */
+    div {
+        border: 1px solid #ddd; /* Світло-сіра рамка */
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        background-color: #f9f9f9; /* Світлий фон */
+        overflow-x: auto; /* Додано горизонтальну прокрутку, якщо контент не вміщається */
+        word-wrap: break-word; /* Перенос слів, якщо контент занадто довгий */
+    }
+
+    /* Стилі для посилання "Back to Sites" */
+    a {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #007bff; /* Синій фон */
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    a:hover {
+        background-color: #0056b3; /* Темніший синій при наведенні */
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.15);
+    }
+</style>
+
+    <h1>Proxy Content</h1>
+    <div>
+        {{ content|safe }}
+    </div>
+    <a href="{% url 'site_list' %}">Back to Sites</a>
+{% endblock content %}

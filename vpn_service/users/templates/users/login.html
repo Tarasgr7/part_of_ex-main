@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+<style>
+    .login-container {
+        width: 300px;
+        margin: 50px auto; /* Центрування по вертикалі та горизонталі */
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Центрування заголовка та кнопки */
+        background-color: #f8f9fa; /* Світлий фон */
+    }
+
+    h1 {
+        color: blue;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: calc(100% - 12px);
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    button[type="submit"] {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px; /* Заокруглення кутів */
+        transition: background-color 0.3s ease; /* Плавна зміна кольору при наведенні */
+        width: 100%; /* Кнопка на всю ширину контейнера */
+        margin-top: 10px;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #008000; /* Темніший зелений при наведенні */
+    }
+
+    .register-link {
+        display: block; /* Щоб посилання було на окремому рядку */
+        margin-top: 20px;
+        text-decoration: none;
+        color: #007bff; /* Синій колір посилання */
+        transition: color 0.3s ease;
+    }
+
+    .register-link:hover {
+        color: #0056b3;
+    }
+</style>
+
+<div class="login-container">
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    <a href="{% url 'register' %}" class="register-link">Register</a>
+</div>
+{% endblock content %}

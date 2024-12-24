@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Main Page{% endblock title %}
+
+{% block content %}
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f8f9fa;">
+      <h1>Welcome to VPN Service</h1>
+      <p>Please choose an option to continue:</p>
+      <div style="display: flex; gap: 20px; margin-top: 20px;">
+          <a href="{% url 'register' %}" 
+            style="padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">
+            Register
+          </a>
+          <a href="{% url 'login' %}" 
+            style="padding: 10px 20px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px;">
+            Log In
+          </a>
+      </div>
+  </div>
+{% endblock content %}

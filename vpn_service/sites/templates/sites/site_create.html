@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Site create
+{% endblock title %}
+
+{% block content %}
+<style>
+    /* Стилі для контейнера форми */
+    .form-container {
+        width: 500px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #f8f9fa;
+    }
+
+    /* Стилі для заголовка */
+    .form-container h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Стилі для елементів форми (p) */
+    .form-container p {
+        margin-bottom: 10px;
+    }
+
+    .form-container label {
+        display: block; /* Розміщення label над input */
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-container input[type="text"],
+    .form-container input[type="url"] {
+        width: calc(100% - 12px); /* Займає всю ширину контейнера з урахуванням padding */
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box; /* Важливо для правильного розрахунку ширини */
+    }
+
+    /* Стилі для кнопки Create */
+    .form-container button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .form-container button[type="submit"]:hover {
+        background-color: #0056b3;
+        opacity: 0.9;
+        transform: translateY(-2px);
+        box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Стилі для посилання "Back to Sites" */
+    .form-container .back-link {
+        display: block;
+        margin-top: 20px;
+        text-align: center;
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .form-container .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="form-container">
+    <h1>Create New Site</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create</button>
+    </form>
+    <a href="{% url 'site_list' %}" class="back-link">Back to Sites</a>
+</div>
+
+{% endblock content %}

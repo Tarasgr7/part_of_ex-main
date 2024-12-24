@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+<div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f8f9fa;">
+    <div style="max-width: 400px; width: 100%; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <h1 style="text-align: center; margin-bottom: 20px;">Register</h1>
+        <form method="post" style="display: flex; flex-direction: column; gap: 15px;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; text-transform: uppercase; font-weight: bold;">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock content %}
