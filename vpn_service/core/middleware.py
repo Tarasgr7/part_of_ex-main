@@ -12,8 +12,6 @@ class TrafficMonitorMiddleware(MiddlewareMixin):
             url = request.path
             request_size = len(request.body or b"")
             response_size = len(response.content or b"")
-
-            # Збереження статистики
             UserActivity.objects.create(
                 user=user,
                 url=url,

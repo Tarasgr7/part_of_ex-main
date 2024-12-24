@@ -10,7 +10,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('profile')  # Redirect to profile after successful registration
+            return redirect('profile')
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
@@ -24,30 +24,26 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('profile')  # Redirect to profile after successful login
-            else:
-                # Handle invalid credentials (optional: display error message)
-                pass
+                return redirect('profile')
     else:
         form = AuthenticationForm()
     return render(request, 'users/login.html', {'form': form})
 
-@login_required  # Require user to be logged in to access profile
+@login_required
 def profile(request):
-    return render(request, 'users/profile.html')  # Simplified profile view
+    return render(request, 'users/profile.html')
 
 @login_required
 def edit_profile(request):
     if request.method == 'POST':
-        form = CustomUserChangeForm(request.POST, instance=request.user)  # Update user instance
+        form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            # Handle successful update (optional: display confirmation message)
-            return redirect('profile')  # Redirect back to profile after update
+            return redirect('profile')
     else:
-        form = CustomUserChangeForm(instance=request.user)  # Pre-populate the form with user data
-    return render(request, 'users/edit_profile.html', {'form': form})  # Pass the form to the template
+        form = CustomUserChangeForm(instance=request.user)
+    return render(request, 'users/edit_profile.html', {'form': form})
 
 def logout_view(request):
     logout(request)
-    return redirect('login')  # Redirect to login page after logout
+    return redirect('login')  

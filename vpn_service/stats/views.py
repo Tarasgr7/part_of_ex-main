@@ -21,19 +21,5 @@ def user_statistics(request):
     return render(request, 'stats/stats.html', {'stats': stats})
 
 
-# def user_statistics(request):
-#     if not request.user.is_authenticated:
-#         return HttpResponse("Unauthorized", status=401)
-
-#     activities = UserActivity.objects.filter(user=request.user)
-
-#     stats = activities.values('url').annotate(
-#         transitions=Count('id'),
-#         total_sent=Sum('request_size'),
-#         total_received=Sum('response_size')
-#     )
-
-#     return render(request, 'stats/stats.html', {'stats': stats})
-
 
 

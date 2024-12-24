@@ -1,4 +1,4 @@
-from django.conf import settings  # Для використання AUTH_USER_MODEL
+from django.conf import settings 
 from django.db import models
 
 class UserActivity(models.Model):
