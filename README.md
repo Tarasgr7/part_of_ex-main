@@ -10,8 +10,8 @@
 Якщо ви ще не клонували репозиторій, зробіть це за допомогою Git:
 
 ```bash
-git clone <https://github.com/Tarasgr7/part_of_ex-main.git>
-cd <vpn_servise>
+git clone https://github.com/Tarasgr7/part_of_ex-main.git
+cd vpn_servise
 ```
 ## 2. Створення та активація віртуального середовища (необов'язково)
 
