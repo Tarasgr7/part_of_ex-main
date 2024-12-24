@@ -2,6 +2,9 @@ FROM python:3.11
 
 WORKDIR /vpn_servise
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 COPY requirements.txt /vpn_servise/
 
 RUN pip install --no-cache-dir -r requirements.txt
